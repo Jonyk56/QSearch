@@ -1,3 +1,9 @@
-.sub_button {
+button {
   display: flex;
+  background-color:white;
+}
+
+
+button .sub_button {
+  justify-self:;
 }
