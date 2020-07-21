@@ -3,14 +3,16 @@
   "version": "0.0.1",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "buildcss": "pnpx tailwindcss build public/uncompiled.css -o public/build.css"
   },
   "dependencies": {
     "express": "^4.17.1",
     "jsoning": "^0.7.14",
     "ejs": "^3.1.3",
     "node-fetch": "^2.6.0",
-    "body-parser": "^1.19.0"
+    "body-parser": "^1.19.0",
+    "tailwindcss": "^1.5.1"
   },
   "engines": {
     "node": "12.x"

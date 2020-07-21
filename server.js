@@ -4,7 +4,7 @@ const jsoning = require("jsoning");
 const fetch = require("node-fetch");
 let ejs = require("ejs");
 
-let db = new jsoning("db.json");
+let db = new jsoning("db.json"); // We can interchange with endb for production :D
 
 var pages = []; //used for regex hits
 var urls = {};
