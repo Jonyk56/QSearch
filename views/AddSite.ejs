@@ -1,4 +1,14 @@
 <%- include('partials/header.ejs') %>
-<form>
-  <input type="text" placeholder=""
-</form>
+<a href="/"><button>return to search</button></a>
+<script>document.getElementById("add_url").style.visibility = "hidden"</script>
+<form action="/submit" method="get">
+  <input type="text" placeholder="Site Name ( e.g. google.com )" name="name">
+  <br>
+  <input type="text" placeholder="Site Url ( e.g. http://google.com/ )" name="url">
+  <br>
+  <input type="text" placeholder="Site Tags ( Seperated By Commas )" name="tags">
+  <br>
+  <button type="submit">
+    Submit Site
+  </button>
+</form><br>

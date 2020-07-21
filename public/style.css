@@ -1,11 +1,12 @@
 .sub_button {
   display: flex;
   background-color:white;
-  float: right
+  float: right;
 }
 button {
   display: flex;
   background-color:white;
+  text-decoration: none;
 }
 
 input {
@@ -13,8 +14,12 @@ input {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  text-decoration: none;
+
 }
 input[type=text]:focus {
   border: 3px solid #555;
+  text-decoration: none;
+
 }
 

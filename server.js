@@ -44,8 +44,14 @@ app.get("/s", (request, response) => {
   
 });
 
-app.get("/AddSite", (reqeust,response) => {
-  
+app.get("/AddSite", (request,response) => {
+  response.render(__dirname + "/views/AddSite.ejs");
+})
+
+app.get("/submit", (request, response) => {
+  db.set(request.query.name, {
+    TAGS:request.query.tags.split(",")
+  })
 })
 
 const listener = app.listen(process.env.PORT, () => {
@@ -58,5 +64,6 @@ const listener = app.listen(process.env.PORT, () => {
     pages.push(SiteName);
     urls[SiteName] = SiteData.URL;
     tags[SiteName] = SiteData.TAGS;
+    
   }
 });
