@@ -1,6 +1,7 @@
 button {
   display: flex;
   background-color:white;
+  align: right
 }
 
 input {
@@ -13,4 +14,3 @@ input[type=text]:focus {
   border: 3px solid #555;
 }
 
-u
