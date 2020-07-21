@@ -32,7 +32,7 @@ app.get("/", (request, response) => {
   response.render(__dirname + "/views/index.ejs");
 });
 
-app.get("/s", (request, response) => {
+app.get("/search", (request, response) => {
   let Sites = [];
   let matches = {};
   if (
@@ -49,6 +49,7 @@ app.get("/s", (request, response) => {
     
     
   })
+  response.send("Not implemented");
 });
 
 app.get("/AddSite", (request, response) => {
