@@ -32,7 +32,9 @@ app.get("/", (request, response) => {
 });
 
 app.get("/s", (request,response) => {
-  response.render()
+  let Sites = [];
+  let matches = {};
+  if (request.body.q.slice(0,7) == "http://" || request.body.q.slice(0,8) == "https://" )
 })
 
 
@@ -45,6 +47,8 @@ const listener = app.listen(process.env.PORT, () => {
   let list = db.get("List-Of-Sites");
   list = Object.entries(list) //Split lists up in a very odd fashion
   for (const [SiteName, SiteData] of list){
-    
+    pages.push(SiteName);
+    urls[SiteName] = SiteData.URL;
+    tags[SiteName] = SiteData.TAGS
   }
 });

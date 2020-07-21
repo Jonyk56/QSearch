@@ -1,7 +1,11 @@
+.sub_button {
+  display: flex;
+  background-color:white;
+  float: right
+}
 button {
   display: flex;
   background-color:white;
-  align: right
 }
 
 input {
