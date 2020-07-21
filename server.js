@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const jsoning = require("jsoning");
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 let ejs = require("ejs");
 
 let db = new jsoning("db.json");
@@ -9,7 +9,7 @@ let db = new jsoning("db.json");
 var pages = []; //used for regex hits
 var urls = {};
 var tags = {};
-var SiteDatas = {}
+var SiteDatas = {};
 
 //********************************************************************************************************************************************************************************************************************************************************************
 
@@ -41,18 +41,28 @@ app.get("/s", (request, response) => {
   ) {
     response.redirect(request.query.q);
   }
-  
+  let Sdata = db.get("List-Of-Sites");
+  Sites = Object.keys(Sdata);
+  Sites.forEach(Site => {
+    let s_ = Sdata[Site];
+    let curl = s_.URL
+    
+    
+  })
 });
 
-app.get("/AddSite", (request,response) => {
+app.get("/AddSite", (request, response) => {
   response.render(__dirname + "/views/AddSite.ejs");
-})
+});
 
 app.get("/submit", (request, response) => {
-  db.set(request.query.name, {
-    TAGS:request.query.tags.split(",")
-  })
-})
+  let data = db.get("List-Of-Sites");
+  data[request.query.name] = {
+    TAGS: request.query.tags.split(","),
+    URL: request.query.url
+  };
+  db.set("List-Of-Sites", data);
+});
 
 const listener = app.listen(process.env.PORT, () => {
   if (!db.has("List-Of-Sites")) {
@@ -64,6 +74,5 @@ const listener = app.listen(process.env.PORT, () => {
     pages.push(SiteName);
     urls[SiteName] = SiteData.URL;
     tags[SiteName] = SiteData.TAGS;
-    
   }
 });
