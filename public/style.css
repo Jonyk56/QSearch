@@ -3,6 +3,14 @@ button {
   background-color:white;
 }
 
-
-button .sub_button {
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+u

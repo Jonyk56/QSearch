@@ -5,8 +5,9 @@ let ejs = require("ejs");
 
 let db = new jsoning("db.json");
 
-
-var pages = [];
+var pages = []; //used for regex hits
+var urls = {};
+var tags = {};
 
 
 //********************************************************************************************************************************************************************************************************************************************************************
@@ -21,6 +22,8 @@ function checkHttps(req, res, next){
     res.redirect('https://' + req.hostname + req.url);
   }
 }
+
+app.set("partials", "views/partials")
 
 app.all('*', checkHttps);
 
@@ -37,6 +40,11 @@ app.get("/s", (request,response) => {
 
 const listener = app.listen(process.env.PORT, () => {
   if (!db.has("List-Of-Sites")){
-    db.set("List-Of-Sites", []);
+    db.set("List-Of-Sites", {});
+  }
+  let list = db.get("List-Of-Sites");
+  list = Object.entries(list) //Split lists up in a very odd fashion
+  for (const [SiteName, SiteData] of list){
+    
   }
 });
