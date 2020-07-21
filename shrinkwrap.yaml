@@ -1,5 +1,6 @@
 dependencies:
   express: 4.17.1
+  jsoning: 0.7.14
 packages:
   /accepts/1.3.7:
     dependencies:
@@ -192,6 +193,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
+  /imurmurhash/0.1.4:
+    dev: false
+    engines:
+      node: '>=0.8.19'
+    resolution:
+      integrity: sha1-khi5srkoojixPcT7a21XbyMUU+o=
   /inherits/2.0.3:
     dev: false
     resolution:
@@ -206,6 +213,18 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-M4Sjn6N/+O6/IXSJseKqHoFc+5FdGJ22sXqnjTpdZweHK64MzEPAyQZyEU3R/KRv2GLoa7nNtg/C2Ev6m7z+eA==
+  /is-typedarray/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
+  /jsoning/0.7.14:
+    dependencies:
+      write-file-atomic: 3.0.3
+    dev: false
+    engines:
+      node: '>=0.12'
+    resolution:
+      integrity: sha512-D1TR8OpW6TDwnj5s9HcCK/XJWn88CiNl7uZAImhAdzvuRcQWJ2Liux8x1dVZAnkdQJYQRSZJFwo9y0U4hNWOfw==
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -350,6 +369,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+  /signal-exit/3.0.3:
+    dev: false
+    resolution:
+      integrity: sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
   /statuses/1.5.0:
     dev: false
     engines:
@@ -371,6 +394,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==
+  /typedarray-to-buffer/3.1.5:
+    dependencies:
+      is-typedarray: 1.0.0
+    dev: false
+    resolution:
+      integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   /unpipe/1.0.0:
     dev: false
     engines:
@@ -389,8 +418,18 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+  /write-file-atomic/3.0.3:
+    dependencies:
+      imurmurhash: 0.1.4
+      is-typedarray: 1.0.0
+      signal-exit: 3.0.3
+      typedarray-to-buffer: 3.1.5
+    dev: false
+    resolution:
+      integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   express: ^4.17.1
+  jsoning: ^0.7.14
