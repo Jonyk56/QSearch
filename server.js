@@ -46,9 +46,10 @@ app.get("/search", (request, response) => {
   Sites = Object.keys(Sdata);
   let urlsIndexed = [];
   Sites.forEach(Site => {
+    console.log(Site)
     let s_ = Sdata[Site];
     s_.TAGS.forEach(tag => {
-      console.log(request.query.q)
+      //console.log(tag)
       if (
         request.query.q.indexOf(tag.trim()) > -1 &&
         urlsIndexed[urlsIndexed.length - 1] !== s_.url
