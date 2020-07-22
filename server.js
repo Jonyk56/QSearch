@@ -43,10 +43,10 @@ app.get("/search", (request, response) => {
   }
   let Sdata = db.get("List-Of-Sites");
   Sites = Object.keys(Sdata);
+  let urlsIndexed = []
   Sites.forEach(Site => {
     let s_ = Sdata[Site];
-    let curl = s_.URL
-    
+    s_.tags
     
   })
   response.send("Not implemented");
