@@ -59,6 +59,9 @@ app.get("/search", (request, response) => {
   response.render(__dirname + "/views/search.ejs", {urlsIndexed:urlsIndexed});
 });
 
+/*^ that should index all urls with the tag the database was given*/
+
+
 app.get("/AddSite", (request, response) => {
   response.render(__dirname + "/views/AddSite.ejs");
 });
