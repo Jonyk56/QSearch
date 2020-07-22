@@ -42,18 +42,21 @@ app.get("/search", (request, response) => {
     response.redirect(request.query.q);
   }
   let Sdata = db.get("List-Of-Sites");
-  console.log(Sdata)
+  //console.log(Sdata)
   Sites = Object.keys(Sdata);
   let urlsIndexed = [];
+  console.log(Sites)
   Sites.forEach(Site => {
-    console.log(Site)
+    //console.log(Site)
     let s_ = Sdata[Site];
     s_.TAGS.forEach(tag => {
       //console.log(tag)
+      //console.log(request.query.q)
       if (
-        request.query.q.indexOf(tag.trim()) > -1 &&
+        request.query.q.indexOf(tag.trim()) > 0 &&
         urlsIndexed[urlsIndexed.length - 1] !== s_.url
       ) {
+        console.log(s_.URL)
         urlsIndexed.push(s_);
       }
     });
