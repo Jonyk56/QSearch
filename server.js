@@ -42,6 +42,7 @@ app.get("/search", (request, response) => {
     response.redirect(request.query.q);
   }
   let Sdata = db.get("List-Of-Sites");
+  console.log(Sdata)
   Sites = Object.keys(Sdata);
   let urlsIndexed = [];
   Sites.forEach(Site => {
@@ -72,6 +73,7 @@ app.get("/submit", (request, response) => {
     TAGS: request.query.tags.split(","),
     URL: request.query.url
   };
+  console.log(data)
   db.set("List-Of-Sites", data);
   response.redirect("/")
 });
