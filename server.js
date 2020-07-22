@@ -43,13 +43,20 @@ app.get("/search", (request, response) => {
   }
   let Sdata = db.get("List-Of-Sites");
   Sites = Object.keys(Sdata);
-  let urlsIndexed = []
+  let urlsIndexed = [];
   Sites.forEach(Site => {
     let s_ = Sdata[Site];
-    s_.tags
-    
-  })
-  response.send("Not implemented");
+    s_.TAGS.forEach(tag => {
+      console.log(request.query.q)
+      if (
+        request.query.q.indexOf(tag.trim()) > -1 &&
+        urlsIndexed[urlsIndexed.length - 1] !== s_.url
+      ) {
+        urlsIndexed.push(s_);
+      }
+    });
+  });
+  response.render(__dirname + "/views/search.ejs", {urlsIndexed:urlsIndexed});
 });
 
 app.get("/AddSite", (request, response) => {
@@ -63,6 +70,7 @@ app.get("/submit", (request, response) => {
     URL: request.query.url
   };
   db.set("List-Of-Sites", data);
+  response.redirect("/")
 });
 
 const listener = app.listen(process.env.PORT, () => {
