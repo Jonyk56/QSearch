@@ -4,7 +4,7 @@ const jsoning = require("jsoning");
 const fetch = require("node-fetch");
 let ejs = require("ejs");
 
-let db = new jsoning("db.json"); // We can interchange with endb for production :D
+let db = new jsoning(process.cwd() + "/db.json"); // We can interchange with endb for production :D
 
 var pages = []; //used for regex hits
 var urls = {};
@@ -42,26 +42,21 @@ app.get("/search", (request, response) => {
     response.redirect(request.query.q);
   }
   let Sdata = db.get("List-Of-Sites");
-  //console.log(Sdata)
   Sites = Object.keys(Sdata);
   let urlsIndexed = [];
-  console.log(Sites)
   Sites.forEach(Site => {
-    //console.log(Site)
     let s_ = Sdata[Site];
     s_.TAGS.forEach(tag => {
-      //console.log(tag)
-      //console.log(request.query.q)
       if (
-        request.query.q.indexOf(tag.trim()) > 0 &&
-        urlsIndexed[urlsIndexed.length - 1] !== s_.url
+        request.query.q.indexOf(tag.toLowerCase().trim()) >= 0 
       ) {
-        console.log(s_.URL)
+
         urlsIndexed.push(s_);
       }
     });
   });
-  response.render(__dirname + "/views/search.ejs", {urlsIndexed:urlsIndexed});
+  let uris = [];
+  response.render(__dirname + "/views/search.ejs", {urlsIndexed:JSON.stringify(urlsIndexed), question:request.query.q});
 });
 
 /*^ that should index all urls with the tag the database was given*/
@@ -73,8 +68,9 @@ app.get("/AddSite", (request, response) => {
 
 app.get("/submit", (request, response) => {
   let data = db.get("List-Of-Sites");
+  console.log(request.query.tags)
   data[request.query.name] = {
-    TAGS: request.query.tags.split(","),
+    TAGS: request.query.tags.toLowerCase().split(","),
     URL: request.query.url
   };
   console.log(data)
@@ -82,7 +78,7 @@ app.get("/submit", (request, response) => {
   response.redirect("/")
 });
 
-const listener = app.listen(process.env.PORT, () => {
+const listener = app.listen(3000, () => {
   if (!db.has("List-Of-Sites")) {
     db.set("List-Of-Sites", {});
   }
@@ -94,3 +90,4 @@ const listener = app.listen(process.env.PORT, () => {
     tags[SiteName] = SiteData.TAGS;
   }
 });
+

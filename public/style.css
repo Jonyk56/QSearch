@@ -8,6 +8,10 @@ button {
   background-color:white;
   text-decoration: none;
 }
+button.return {
+    padding: 7.5px 10px;
+    text-decoration: none;
+}
 
 input {
   width: 100%;
@@ -20,4 +24,25 @@ input {
 input[type=text]:focus {
   text-decoration: none;
 
+}
+
+
+a.web_url {
+    /*text-indent: 40%;*/
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.tags {
+    margin-left: 50px;
+}
+
+
+
+a.no-underline {
+    text-decoration: none;
+}
+
+.what-we-found {
+    margin-left: 5px;
 }

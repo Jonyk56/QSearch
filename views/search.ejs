@@ -1,9 +1,33 @@
-<% include('partials/header.ejs') %>
-<script src="https://github.com/mde/ejs/releases/download/v3.0.2/ejs.min.js" defer></script>
-<a href="/"><button class="p-1 bg-teal-500 rounded-lg py-2 px-6 text-white">return to search</button></a>
-<h3>Here is what we found:</h3>
-<div style="visibility:hidden;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Qsearch - A programmer's search engine">
+  <meta name="Qdescription" content="Qsearch - A programmer's search engine">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <title> QSearch - <%= question %></title>
+  <script src="/script.js" defer></script>
   
-<%= urlsIndexed -%>
-  
-</div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+	<script src="https://github.com/mde/ejs/releases/download/v3.0.2/ejs.min.js" defer></script>
+	<a href="/" class="no-underline"><button class="return">return to search</button></a>
+	<h3 class="what-we-found">Here is what we found:</h3>
+	<div style="visibility:hidden;" id="data" class="Hidden"><%= urlsIndexed %></div>
+</body>
+
+<script>
+	let data = decodeURIComponent(document.getElementById("data").innerHTML);
+    data = JSON.parse(data)
+    for (const ditem of data){
+       let elem= document.createElement("div");
+       elem.innerHTML = "<a class=\"web_url\" href=\"" + ditem.URL + "\">" + ditem.URL + "</a><br>";
+
+       document.body.appendChild(elem)
+    }
+</script>
