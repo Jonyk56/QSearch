@@ -46,14 +46,18 @@ app.get("/search", (request, response) => {
   let urlsIndexed = [];
   Sites.forEach(Site => {
     let s_ = Sdata[Site];
+    let d_ = s_
+    d_.hits = 0
     s_.TAGS.forEach(tag => {
       if (
         request.query.q.indexOf(tag.toLowerCase().trim()) >= 0 
       ) {
-
-        urlsIndexed.push(s_);
+        d_.hits++
       }
     });
+    if (d_.hits > 0){
+        urlsIndexed.push(d_);
+    }
   });
   let uris = [];
   response.render(__dirname + "/views/search.ejs", {urlsIndexed:JSON.stringify(urlsIndexed), question:request.query.q});

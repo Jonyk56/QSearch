@@ -24,6 +24,20 @@
 <script>
 	let data = decodeURIComponent(document.getElementById("data").innerHTML);
     data = JSON.parse(data)
+    data.sort((a,b) => {
+        console.log(a.hits);
+        console.log(b.hits);
+        console.log(a.URL);
+        console.log(b.URL);
+        if (a.hits < b.hits){
+            return 1;
+        }
+        if (a.hits > b.hits){
+            return -1;
+        }
+        return 0
+    });
+    console.log(data);
     for (const ditem of data){
        let elem= document.createElement("div");
        elem.innerHTML = "<a class=\"web_url\" href=\"" + ditem.URL + "\">" + ditem.URL + "</a><br>";
